@@ -7,9 +7,7 @@ INPUT_FILE=ip.txt
 iplist=`cat $INPUT_FILE`
 for ip in $iplist
 do
-    echo $ip
-    whois $ip | grep 'origin' | awk '{print $2}' >> as.txt
-
+    whois $ip | grep 'origin' $info | awk '{print $2}' >> as.txt
 done
 
-cat as.txt | uniq -c | sort > sorted.txt
+cat as.txt | uniq -c | sort > sorted_as.txt
